@@ -13,8 +13,8 @@ tidyfy.data.frame <- function(x, by, ...) {
   vtypes <- variable_classes(x)
   # List of data frames
   datlist <- lapply(vtypes, function(vn) {
-    s <- select_(x, lazyeval::interp(~one_of(v), v=unique(c(by, vn))))
-    gather_(s, "key", "value", setdiff(names(s), by))
+    s <- dplyr::select_(x, lazyeval::interp(~one_of(v), v=unique(c(by, vn))))
+    tidyr::gather_(s, "key", "value", setdiff(names(s), by))
   } )
   datlist
 }
