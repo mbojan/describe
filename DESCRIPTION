@@ -6,5 +6,6 @@ Author@R: person("Michal", "Bojanowski", role=c("aut", "cre"),
     email="michal2992@gmail.com")
 Description: Nice tables with summary descriptive statistics, dplyr-friendly.
 Imports: dplyr, tidyr
+Suggests: testthat, roxygen2
 License: MIT + file LICENSE
 LazyData: TRUE
