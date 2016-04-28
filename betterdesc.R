@@ -17,34 +17,15 @@ d <- mtcars %>%
   )
 str(d)
 
-dg <- d %>% group_by(cyl)
+dg <- d %>% group_by(cyl, hp)
 
 
-# Variables by type
-variable_types <- function(dat) {
-  stopifnot(inherits(dat, "data.frame"))
-  cls <- sapply(dat, class)
-  vtypes <- lapply( unique(cls), function(x) names(cls)[cls==x] )
-  names(vtypes) <- unique(cls)
-  vtypes
-}
 
-# Variable types
 
 x <- lapply(vtypes, function(vn) select_(dg, lazyeval::interp(~one_of(x), x=vn)))
 str(x)
 
 #' Return a list of tidy data frames by variable type
-tidyfy <- function(dat) {
-  vtypes <- variable_types(dat)
-  gvars <- as.character(attr(dat, "vars"))
-  # List of data frames
-  datlist <- lapply(vtypes, function(vn) {
-    s <- select_(d, lazyeval::interp(~one_of(x), x=unique(c(gvars, vn))))
-    gather_(s, "key", "value", setdiff(names(s), gvars))
-  } )
-  datlist
-}
 
 x <- tidyfy(dg)
 str(x)
