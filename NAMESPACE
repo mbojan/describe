@@ -3,6 +3,7 @@
 S3method(tidyfy,data.frame)
 S3method(tidyfy,default)
 S3method(tidyfy,grouped_df)
+export(describe)
 export(tidyfy)
 export(variable_classes)
 import(dplyr)
