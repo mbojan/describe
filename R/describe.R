@@ -7,6 +7,7 @@
 #' @export
 #'
 #' @examples
+#' library(dplyr)
 #' mtcars %>% group_by(cyl) %>% describe()
 #'
 describe <- function(x, ...) {
