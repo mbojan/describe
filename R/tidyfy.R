@@ -4,7 +4,7 @@
 #' @param by character, variables names to split descriptives by
 #' @param ... other arguments passed to/from other methods
 #'
-#' @return List of data frames
+#' @return List of tidied data frames.
 #' @export
 #' @import dplyr tidyr
 
@@ -14,14 +14,19 @@ tidyfy <- function(x, ...) UseMethod("tidyfy")
 
 #' @method tidyfy grouped_df
 #' @rdname tidyfy
+#' @export
 tidyfy.grouped_df <- function(x, ...) {
   # names of grouping variables
-  by <- as.character(attr(dat, "vars"))
-  NextMethod("tidyfy", object=x, by=by)
+  by <- as.character(attr(x, "vars"))
+  NextMethod("tidyfy", x, by=by, ...)
 }
+
+
+
 
 #' @method tidyfy data.frame
 #' @rdname tidyfy
+#' @export
 tidyfy.data.frame <- function(x, by, ...) {
   stopifnot(is.character(by))
   vtypes <- variable_classes(x)
@@ -36,6 +41,7 @@ tidyfy.data.frame <- function(x, by, ...) {
 
 #' @method tidyfy default
 #' @rdname tidyfy
+#' @export
 tidyfy.default <- function(x, ...) {
   stop("Unsupported class of `x`: ", paste(class(x), sep=", "))
 }
