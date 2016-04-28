@@ -1,0 +1,9 @@
+Package: describe
+Type: Package
+Title: Nice Summary Tables with Descriptive Statistics
+Version: 0.1.0
+Author@R: person("Michal", "Bojanowski", role=c("aut", "cre"),
+    email="michal2992@gmail.com")
+Description: Nice tables with summary descriptive statistics, dplyr-friendly.
+License: MIT + file LICENSE
+LazyData: TRUE
