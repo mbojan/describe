@@ -23,7 +23,7 @@ tidyfy(x, ...)
 \item{by}{character, variables names to split descriptives by}
 }
 \value{
-List of data frames
+List of tidied data frames.
 }
 \description{
 Tidy data frame
